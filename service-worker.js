@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/CarShopApp/precache-manifest.2a650cd6784c7c4615d4a17823b4375d.js"
+  "/CarShopApp/precache-manifest.9e730ed7776d9333f4147cda905a9152.js"
 );
 
 workbox.clientsClaim();

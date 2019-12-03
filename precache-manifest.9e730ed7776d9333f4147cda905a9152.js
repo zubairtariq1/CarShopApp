@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/CarShopApp/static/css/1.c7f2ac9d.chunk.css"
   },
   {
-    "revision": "a7e92a2141c57aeb6ebf83f5a6d10b2c",
+    "revision": "71bb7ad6b3c2ea7812fe40756b640dd5",
     "url": "/CarShopApp/index.html"
   }
 ];
