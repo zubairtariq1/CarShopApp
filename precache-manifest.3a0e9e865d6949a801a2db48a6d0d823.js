@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/CarShopApp/static/js/runtime~main.f9b250f3.js"
   },
   {
-    "revision": "739281354f1d84c9acc8",
-    "url": "/CarShopApp/static/js/main.73928135.chunk.js"
+    "revision": "19169f4afd5c883b5730",
+    "url": "/CarShopApp/static/js/main.19169f4a.chunk.js"
   },
   {
     "revision": "224cbec9610b5624fe5f",
     "url": "/CarShopApp/static/js/1.224cbec9.chunk.js"
   },
   {
-    "revision": "739281354f1d84c9acc8",
+    "revision": "19169f4afd5c883b5730",
     "url": "/CarShopApp/static/css/main.9e3616fc.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/CarShopApp/static/css/1.c7f2ac9d.chunk.css"
   },
   {
-    "revision": "71bb7ad6b3c2ea7812fe40756b640dd5",
+    "revision": "45ceefffc06b096e90914a1caeb9f2dc",
     "url": "/CarShopApp/index.html"
   }
 ];
