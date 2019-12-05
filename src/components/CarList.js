@@ -12,7 +12,7 @@ class Carlist extends Component {
 
     constructor(params) {
         super(params);
-        this.state = {cars: [], showSnack: false, msg:''};
+        this.state = { cars: [], showSnack: false, msg: '' };
     }
 
     componentDidMount() {
@@ -21,66 +21,68 @@ class Carlist extends Component {
 
     updateCar = (car, link) => {
         fetch(link,
-        {method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(car)
-        })
-        .then(response => {
-            this.setState({showSnack: true, msg:'Car Saved'})
-            this.listCars();
-        })
+            {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(car)
+            })
+            .then(response => {
+                this.setState({ showSnack: true, msg: 'Car Saved' })
+                this.listCars();
+            })
     }
-    renderEditable =(cellInfo) => {
+    renderEditable = (cellInfo) => {
         return (
-          <div
-            style={{ backgroundColor: "#fafafa" }}
-            contentEditable
-            suppressContentEditableWarning
-            onBlur={e => {
-              const data = [...this.state.cars];
-              data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-              this.setState({ cars: data });
-            }}
-            dangerouslySetInnerHTML={{
-              __html: this.state.cars[cellInfo.index][cellInfo.column.id]
-            }}
-          />
+            <div
+                style={{ backgroundColor: "#fafafa" }}
+                contentEditable
+                suppressContentEditableWarning
+                onBlur={e => {
+                    const data = [...this.state.cars];
+                    data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+                    this.setState({ cars: data });
+                }}
+                dangerouslySetInnerHTML={{
+                    __html: this.state.cars[cellInfo.index][cellInfo.column.id]
+                }}
+            />
         );
-      }
+    }
     handleClose = () => {
-        this.setState({showSnack: false});
+        this.setState({ showSnack: false });
     };
 
     listCars() {
         fetch('https://carstockrest.herokuapp.com/cars')
-        .then(response => response.json())
-        .then(responseData => {
-            this.setState({cars: responseData._embedded.cars})
-        })
+            .then(response => response.json())
+            .then(responseData => {
+                this.setState({ cars: responseData._embedded.cars })
+            })
     }
 
     deleteCar = (link) => {
-        fetch(link, {method: 'DELETE'})
-        .then(response => {
-            this.listCars();
-            this.setState({showSnack: true, msg: 'Car Deleted'});
-        })
+        fetch(link, { method: 'DELETE' })
+            .then(response => {
+                this.listCars();
+                this.setState({ showSnack: true, msg: 'Car Deleted' });
+            })
     }
 
     saveCar = (car) => {
         fetch('https://carstockrest.herokuapp.com/cars',
-        {method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(car)
-        })
-        .then(response => {
-            
-            this.listCars();
-        })
-        .catch(err => {
-            console.error(err);
-            this.setState({showSnack: true, msg: 'Error in Saving'})
-        })
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(car)
+            })
+            .then(response => {
+
+                this.listCars();
+            })
+            .catch(err => {
+                console.error(err);
+                this.setState({ showSnack: true, msg: 'Error in Saving' })
+            })
     }
 
     render() {
@@ -92,41 +94,41 @@ class Carlist extends Component {
             Header: 'Model',
             accessor: 'model',
             Cell: this.renderEditable
-            
+
         }, {
             Header: 'Year',
             accessor: 'year',
             Cell: this.renderEditable
-            
+
         }, {
             Header: 'Color',
             accessor: 'color',
             Cell: this.renderEditable
-            
+
         }, {
             Header: 'Fuel',
             accessor: 'fuel',
             Cell: this.renderEditable
-            
+
         }, {
             Header: 'Price €',
             accessor: 'price',
             Cell: this.renderEditable
-            
+
         }, {
             Header: '',
             accessor: '_links.self.href',
             filterable: false,
             sortable: false,
-            Cell: ({row, value}) => (
+            Cell: ({ row, value }) => (
                 <div><Button size="small" color="default" onClick={() => this.updateCar(row, value)}><SaveIcon /></Button><Button size="small" color="default" onClick={() => this.deleteCar(value)}><DeleteIcon /></Button>
                 </div>
-                ),
-            
-            }, 
+            ),
+
+        },
         ]
-        
-         
+
+
         return (
             <div>
                 <Addcar saveCar={this.saveCar} />
@@ -143,7 +145,7 @@ class Carlist extends Component {
                     TransitionComponent={Fade}
                     message={this.state.msg}
                 />
-          </div>
+            </div>
         );
     }
 }
